@@ -19,3 +19,4 @@ To register a SignalWire SIP endpoint in FreeSWITCH, follow these steps:
   <param name="password" value="password"/> <!-- SignalWire SIP endpoint password -->
   <param name="transport" value="udp"/>
 </gateway>
+   - Now, go to fs_cli and then execute reloadxml. After a successful XML reload, execute reload mod_sofia, and to see your gateway in fs_cli, execute sofia status.
