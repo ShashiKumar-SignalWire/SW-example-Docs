@@ -54,7 +54,7 @@ In this example, we will walk through the steps involved in setting up a voicema
     "zbPB5t-FP3ptWUbHmYHCm": [
       {
         "play": {
-          "url": "say:Our Agent is not asnswring your call at the mpment, Please leave your mesage after the beeb sound",
+          "url": "say:Our Agent is not answering your call at the moment, Please leave your message after the beeb sound",
           "say_language": "en-US",
           "say_gender": "female",
           "say_voice": "gcloud.en-US-Neural2-C"
@@ -169,7 +169,56 @@ Ends the call after the recording is completed or if the call cannot be connecte
 
 
 ## SignalWire Call Flow Builder Voicemail Example
-[Include SignalWire Call Flow Builder voicemail example here]
 
+## Introduction
+
+In addition to traditional scripting methods like SignalWire Markup Language (SWML), SignalWire offers a user-friendly drag-and-drop interface called SignalWire Call Flow Builder. This intuitive tool allows users to create complex Interactive Voice Response (IVR) systems visually, without extensive coding knowledge.
+
+SignalWire Call Flow Builder empowers users to design IVRs by arranging various call flow elements such as connect, join_room, play, switch, etc., using a simple drag-and-drop interface. This approach streamlines the process of building telephony applications, enabling rapid development and iteration cycles.
+
+Now, let's create an example of a voicemail system step-by-step using SignalWire Call Flow Builder, accompanied by screenshots to guide you through each stage of the process.
+
+
+1. **Login and Access Call Flow Builder**: Upon logging into your SignalWire space, navigate to the Call Flow Builder section.
+   ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/18c7285c-6750-4afb-9321-2db0fd3721d3)
+
+
+2. **Create a New Call Flow**: Click on the "+ Add New" button located in the top-right corner. This action will redirect you to a new page containing a text box and a "Save" button.
+   ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/13926569-11e7-432e-a385-369b041dae0f)
+
+
+3. **Name Your Call Flow**: In the text box, provide a meaningful name for your call flow, then click "Save." You will then be redirected to the Builder page.
+ 
+
+4. **Explore the Call Flow Builder Interface**: On the Builder page, you'll notice all available nodes listed on the left panel and the "Handle call" section in the middle.
+![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/9e8f52f5-2153-42e4-9929-cff875afaf73)
+
+5. **Add Forward to Phone Number Node**: Click on the "Forward to Phone Number" button. A form will appear on the right side, allowing you to specify the forward-to-phone options.
+ ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/1d92e785-4166-405c-879e-7b6e69e06b21)
+
+
+6. **Fill Out Forwarding Options**: In the form, set the "Default From" field to your SignalWire number. Then, under "Phone Number 1," specify the "From" and "To" numbers. You have the option to add more phone numbers if needed.
+
+7. **Handle Call Flow**: After adding the forward to the phone number node, you'll see options for handling different call outcomes like Success, No Answer, Busy, Decline, and Error.
+ ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/15133637-5874-41b1-b65e-a9c43ef01545)
+
+
+8. **Connect Nodes**: Create a link between the "Handle call" node and the "Forward to Phone" node.
+  ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/2f7ab1b4-7246-4f79-a9db-5e976978d87e)
+
+9. **Handle Different Call Outcomes**: For each outcome (Success, No Answer, Busy, Decline, Error), add appropriate actions. For example, use the "Play Audio or TTS" node to provide a message for each scenario.
+10. 
+
+11. **Set Up Voicemail Recording**: Select the "Voicemail Recording" node and specify the desired audio format (e.g., WAV or MP3).
+     ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/9ecec43f-3272-45a6-9661-112c4556a034)
+
+12. **Link Nodes Together**: Connect the "Voicemail Recording" node to the "Play Audio or TTS" node for the remaining options and then link the "Hangup" node to the "Voicemail Recording" node.
+    ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/c5a0c36b-f661-4e9f-bff0-37c3b1de5d56)
+
+  
+13. **Deploy Call Flow**: Once you've configured the call flow, click on "Deploy" to activate it.
+
+14. Configure the SWML script to use your SignalWire phone number (you can refer to the Purchase a phone number guide for assistance) and save the changes.
+15. Test the functionality of your configured SWML script by initiating calls and verifying the voicemail system.
 
 
