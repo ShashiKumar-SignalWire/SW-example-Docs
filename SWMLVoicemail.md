@@ -8,7 +8,7 @@ In this guide, we will explore various examples of creating voicemail systems us
 
 [Include FreeSWITCH voicemail example here]
 
-## SignalWire LaML Voicemail Example
+## SignalWire SWML Voicemail Example
 
 ### Introduction
 
