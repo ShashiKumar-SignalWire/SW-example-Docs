@@ -146,3 +146,17 @@ To use this SWML voicemail example, you need to integrate the provided SWML scri
 }
 
 ```
+### Getting Started
+
+1. Sign up for a SignalWire account and create a project.
+2. Navigate to your project and click on the "Relay / SWML" tab.
+3. Click on the "SWML Scripts" tab and then click on the "+ New" button to create a new SWML Script.
+4. Copy and paste the provided SWML script into the editor. Ensure to customize the `from` and `to` numbers in the `Connect` action according to your requirements, then save the script.
+5. Configure the SWML script to use your SignalWire phone number (you can refer to the [Purchase a phone number guide](https://developer.signalwire.com/rest/purchase-a-phone-number/) for assistance) and save the changes.
+6. Test the functionality of your configured SWML script by initiating calls and verifying the voicemail system.
+
+### Resources
+[SignalWire Documentation](https://developer.signalwire.com/)
+[SignalWire SWML Guide]([https://developer.signalwire.com/](https://developer.signalwire.com/sdks/reference/swml/methods/))
+
+
