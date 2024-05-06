@@ -157,6 +157,6 @@ To use this SWML voicemail example, you need to integrate the provided SWML scri
 
 ### Resources
 [SignalWire Documentation](https://developer.signalwire.com/)
-[SignalWire SWML Guide]([https://developer.signalwire.com/](https://developer.signalwire.com/sdks/reference/swml/methods/))
+[SignalWire SWML Guide](https://developer.signalwire.com/sdks/reference/swml/methods/)
 
 
