@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this guide, we will explore various examples of creating voicemail systems using different methods: SignalWire Markup Language (SWML), FreeSWITCH, SignalWire LaML, and SignalWire Call Flow Builder. Each method offers unique capabilities and approaches to implementing voicemail functionality within telecommunication systems.
+In this guide, we will explore various examples of creating voicemail systems using different methods: SignalWire Markup Language (SWML), FreeSWITCH, and SignalWire Call Flow Builder. Each method offers unique capabilities and approaches to implementing voicemail functionality within telecommunication systems.
 
 ## FreeSWITCH Voicemail Example
 
