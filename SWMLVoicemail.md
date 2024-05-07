@@ -6,7 +6,43 @@ In this guide, we will explore various examples of creating voicemail systems us
 
 ## FreeSWITCH Voicemail Example
 
-[Include FreeSWITCH voicemail example here]
+## Introduction
+In this setup, we'll configure FreeSWITCH to bridge incoming calls from SignalWire and a destination number. We'll start by registering a gateway with SignalWire SIP endpoint details, and establishing the connection between FreeSWITCH and SignalWire. Then, we'll configure the FreeSWITCH dialplan to handle incoming calls from SignalWire and forward them to a specified destination number. If the call is unanswered, we'll handle voicemail to ensure callers can leave a message. This setup enables seamless call forwarding and voicemail functionality using FreeSWITCH and SignalWire.
+
+### Steps:
+
+1. **Register a Gateway with SignalWire Endpoint**: Follow the guide provided by SignalWire to register a gateway with the SignalWire SIP endpoint details. This step establishes the connection between your FreeSWITCH instance and SignalWire.
+
+2. **Configure Dialplan for Incoming Calls**: Once the gateway is registered, you need to configure your FreeSWITCH dialplan to handle incoming calls from SignalWire and route them to the appropriate destination.
+
+    ```xml
+    <extension name="incoming_calls">
+      <condition field="destination_number" expression="^(\d{10})$">
+        <action application="bridge" data="sofia/gateway/your_signalwire_gateway/${destination_number}"/>
+      </condition>
+    </extension>
+    ```
+
+3. **Configure Voicemail Handling**: To handle cases where the FreeSWITCH user does not answer the call, you can set up voicemail handling in the dialplan.
+
+    ```xml
+    <extension name="voicemail">
+      <condition field="destination_number" expression="^(\d{10})$">
+        <action application="bridge" data="sofia/gateway/your_signalwire_gateway/${destination_number}"/>
+        <action application="voicemail" data="default ${destination_number}"/>
+      </condition>
+    </extension>
+    ```
+
+4. **Adjust Configuration**: Replace `your_signalwire_gateway` with the name of your registered SignalWire gateway.
+
+5. **Testing**: After configuring the dialplan, test the setup by placing a call to the SignalWire number configured to forward calls to the SIP endpoint. If the call is not answered, it should be forwarded to voicemail as per the configured dialplan.
+
+
+#### Resources
+- [Gateways Configuration](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Configuration/Sofia-SIP-Stack/Gateways-Configuration_7144069/)
+- [SIP endpoint configuration](https://developer.signalwire.com/guides/set-up-a-signalwire-phone-number-with-a-sip-endpoint/)
+- [Freeswitch Voicemail](https://developer.signalwire.com/freeswitch/FreeSWITCH-Explained/Modules/mod-voicemail/Voicemail_13174041/)
 
 ## SignalWire SWML Voicemail Example
 
