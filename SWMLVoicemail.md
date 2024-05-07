@@ -12,8 +12,10 @@ In this setup, we'll configure FreeSWITCH to bridge incoming calls from SignalWi
 ### Steps:
 
 1. **Register a Gateway with SignalWire Endpoint**: Follow the guide provided by SignalWire to register a gateway with the SignalWire SIP endpoint details. This step establishes the connection between your FreeSWITCH instance and SignalWire.
+   
+   [Freeswitch Signalwre SIP endpoint registraion](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/blob/main/FS_SIPEndpoint_registration.md)
 
-2. **Configure Dialplan for Incoming Calls**: Once the gateway is registered, you need to configure your FreeSWITCH dialplan to handle incoming calls from SignalWire and route them to the appropriate destination.
+3. **Configure Dialplan for Incoming Calls**: Once the gateway is registered, you need to configure your FreeSWITCH dialplan to handle incoming calls from SignalWire and route them to the appropriate destination.
 
     ```xml
     <extension name="incoming_calls">
@@ -23,7 +25,7 @@ In this setup, we'll configure FreeSWITCH to bridge incoming calls from SignalWi
     </extension>
     ```
 
-3. **Configure Voicemail Handling**: To handle cases where the FreeSWITCH user does not answer the call, you can set up voicemail handling in the dialplan.
+4. **Configure Voicemail Handling**: To handle cases where the FreeSWITCH user does not answer the call, you can set up voicemail handling in the dialplan.
 
     ```xml
     <extension name="voicemail">
@@ -34,9 +36,9 @@ In this setup, we'll configure FreeSWITCH to bridge incoming calls from SignalWi
     </extension>
     ```
 
-4. **Adjust Configuration**: Replace `your_signalwire_gateway` with the name of your registered SignalWire gateway.
+5. **Adjust Configuration**: Replace `your_signalwire_gateway` with the name of your registered SignalWire gateway.
 
-5. **Testing**: After configuring the dialplan, test the setup by placing a call to the SignalWire number configured to forward calls to the SIP endpoint. If the call is not answered, it should be forwarded to voicemail as per the configured dialplan.
+6. **Testing**: After configuring the dialplan, test the setup by placing a call to the SignalWire number configured to forward calls to the SIP endpoint. If the call is not answered, it should be forwarded to voicemail as per the configured dialplan.
 
 
 #### Resources
