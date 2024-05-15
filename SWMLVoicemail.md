@@ -253,15 +253,15 @@ Now, let's create an example of a voicemail system step-by-step using SignalWire
 12. **Link Nodes Together**: Connect the "Voicemail Recording" node to the "Play Audio or TTS" node for the remaining options and then link the "Hangup" node to the "Voicemail Recording" node.
     ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/c5a0c36b-f661-4e9f-bff0-37c3b1de5d56)
 
-    #### Resources
-- [SignalWire Documentation](https://developer.signalwire.com/)
-- [SignalWire CallFlow Voicemail Guide](https://developer.signalwire.com/call-flow-builder/voicemail-recording)
-
-
-  
+   
 14. **Deploy Call Flow**: Once you've configured the call flow, click on "Deploy" to activate it.
 
 15. Configure the SWML script to use your SignalWire phone number (you can refer to the Purchase a phone number guide for assistance) and save the changes.
 16. Test the functionality of your configured SWML script by initiating calls and verifying the voicemail system.
 
+ #### Resources
+- [SignalWire Documentation](https://developer.signalwire.com/)
+- [SignalWire CallFlow Builder Voicemail Guide](https://developer.signalwire.com/call-flow-builder/voicemail-recording)
 
+
+  
