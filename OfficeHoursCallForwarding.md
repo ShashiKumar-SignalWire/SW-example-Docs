@@ -60,8 +60,6 @@ fs_cli -x "reloadxml"
 ### Introduction
 In this guide, we will explore an example of using SignalWire Markup Language (SWML) to create office hours call forwarding. SignalWire Markup Language (SWML) is a scripting language used to control the behavior of voice calls, such as initiating calls, playing audio, recording messages, and more.
 
-### SWML Script Breakdown
-
 **Description:**
 This SWML script is designed to handle incoming calls and forward them to a specific number during office hours (Monday to Friday, 9 AM to 6 PM). It also provides a message informing callers about the office hours and requests them to call during that time frame.
 
@@ -86,8 +84,8 @@ This SWML script is designed to handle incoming calls and forward them to a spec
                     "then": [
                       {
                         "connect": {
-                          "from": "+16172728591",
-                          "to": "+918143209997"
+                          "from": "+16XYXYXYX",
+                          "to": "+198XYXYXYX"
                         }
                       },
                       {
