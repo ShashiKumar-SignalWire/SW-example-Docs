@@ -46,7 +46,6 @@ The following XML configuration should be added to your FreeSWITCH dialplan (e.g
 ### Adjustments
 
 - Replace `${domain_name}` with your actual domain name.
-- Replace `${dialed_extension}` with the extension that should receive the voicemail.
 - Replace `+198XYXYXY` with the actual phone number you want to forward calls to during working hours.
 
 ### How to Use
