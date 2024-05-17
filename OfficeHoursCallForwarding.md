@@ -60,6 +60,11 @@ fs_cli -x "reloadxml"
 ### Introduction
 In this guide, we will explore an example of using SignalWire Markup Language (SWML) to create office hours call forwarding. SignalWire Markup Language (SWML) is a scripting language used to control the behavior of voice calls, such as initiating calls, playing audio, recording messages, and more.
 
+### SWML Script Breakdown
+
+**Description:**
+This SWML script is designed to handle incoming calls and forward them to a specific number during office hours (Monday to Friday, 9 AM to 6 PM). It also provides a message informing callers about the office hours and requests them to call during that time frame.
+
 ```json
 {
   "sections": {
@@ -178,5 +183,63 @@ In this guide, we will explore an example of using SignalWire Markup Language (S
   },
   "version": "1.0.0"
 }
+```
+
+
+### Breakdown and Explanation:
+1. **Answer**: The call is answered to initiate the communication process.
+2. **Request**: A GET request is made to the specified URL to check if the current time is within working hours.
+3. **Switch**: Depending on the success of the request, the script either forwards the call to the specified number or plays a message indicating office hours.
+   - **Success Case**:
+     - If the request is successful and the current time is within working hours:
+       - The call is connected from the specified number to the destination number.
+       - If the call is successfully connected, it is transferred to the specified endpoint (`ZYFRTspBKf-34skFsEoO8`).
+       - If the call cannot be connected for various reasons (e.g., no answer, line busy, etc.), it's transferred to the specified endpoint (`ZYFRTspBKf-34skFsEoO8`).
+   - **Default Case**:
+     - If the request fails or the current time is outside working hours:
+       - A message is played to inform the caller about the office hours and to call during that time frame.
+       - After playing the message, the call is transferred to the specified endpoint (`ZYFRTspBKf-34skFsEoO8`).
+4. **Hangup**: Finally, if the call cannot be connected or handled, it is hung up with the reason specified as "hangup".
+
+5. **Configuration Note**: The URL in the request needs to be replaced with the actual Ngrok URL/public URL containing the provided Node Express code to determine working hours.
+
+**Version:**
+This SWML script version is "1.0.0".
+
+***NodeJS Expess code***
+```javascript
+const express = require('express');
+const app = express();
+
+// Middleware to check time and day
+app.use((req, res, next) => {
+  const now = new Date();
+  const hour = now.getHours();
+  const day = now.getDay(); // Sunday is 0, Monday is 1, and so on...
+
+  // Check if current time is between 9 AM and 6 PM and if it's Monday to Friday
+  if (hour >= 9 && hour < 18 && day >= 1 && day <= 5) {
+    res.locals.isInWorkingHours = true;
+  } else {
+    res.locals.isInWorkingHours = false;
+  }
+  next();
+});
+
+// Route to handle requests
+app.get('/', (req, res) => {
+  res.send('Welcome! The service is available.');
+});
+
+// Route to check if it's working hours and return JSON
+app.get('/is_working_hours', (req, res) => {
+  res.json({ isInWorkingHours: res.locals.isInWorkingHours });
+});
+
+// Start server
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 ```
