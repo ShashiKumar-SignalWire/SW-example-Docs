@@ -11,6 +11,9 @@ The following XML configuration should be added to your FreeSWITCH dialplan (e.g
 
 ```xml
 <extension name="office_hours">
+   <condition field="destination_number" expression="^(10[01][0-9])$">
+        <action application="export" data="dialed_extension=$1"/>
+   </condition>
    <!-- Condition for Monday to Friday, 9 AM to 6 PM -->
    <condition wday="1-5" hour="9-17">
       <action application="set" data="hangup_after_bridge=true"/>
@@ -26,7 +29,6 @@ The following XML configuration should be added to your FreeSWITCH dialplan (e.g
    </condition>
 </extension>
 ```
-
 ### Explanation
 
 1. **Working Hours Condition (9 AM to 6 PM, Monday to Friday):**
