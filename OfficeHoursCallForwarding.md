@@ -53,4 +53,130 @@ The following XML configuration should be added to your FreeSWITCH dialplan (e.g
 1. **Update the Dialplan**: Copy the XML configuration into your FreeSWITCH dialplan file (e.g., `dialplan/default.xml`).
 2. **Reload the Dialplan**: After updating the dialplan, reload it using the FreeSWITCH CLI:
    ```bash
-   fs_cli -x "reloadxml"
+fs_cli -x "reloadxml"
+```
+
+## SignalWire SWML  for Office Hours Call Forwarding
+### Introduction
+In this guide, we will explore an example of using SignalWire Markup Language (SWML) to create office hours call forwarding. SignalWire Markup Language (SWML) is a scripting language used to control the behavior of voice calls, such as initiating calls, playing audio, recording messages, and more.
+
+```json
+{
+  "sections": {
+    "main": [
+      "answer",
+      {
+        "request": {
+          "method": "GET",
+          "url": "https://f47d-103-52-38-2.ngrok-free.app/is_working_hours"
+        }
+      },
+      {
+        "switch": {
+          "case": {
+            "success": [
+              {
+                "cond": [
+                  {
+                    "then": [
+                      {
+                        "connect": {
+                          "from": "+16172728591",
+                          "to": "+918143209997"
+                        }
+                      },
+                      {
+                        "switch": {
+                          "case": {
+                            "connected": [
+                              {
+                                "transfer": "ZYFRTspBKf-34skFsEoO8"
+                              }
+                            ]
+                          },
+                          "default": [
+                            {
+                              "switch": {
+                                "case": {
+                                  "noAnswer": [
+                                    {
+                                      "transfer": "ZYFRTspBKf-34skFsEoO8"
+                                    }
+                                  ],
+                                  "busy": [
+                                    {
+                                      "transfer": "ZYFRTspBKf-34skFsEoO8"
+                                    }
+                                  ],
+                                  "decline": [
+                                    {
+                                      "transfer": "ZYFRTspBKf-34skFsEoO8"
+                                    }
+                                  ],
+                                  "error": [
+                                    {
+                                      "transfer": "ZYFRTspBKf-34skFsEoO8"
+                                    }
+                                  ]
+                                },
+                                "default": [
+                                  "hangup"
+                                ],
+                                "variable": "connect_failed_reason"
+                              }
+                            }
+                          ],
+                          "variable": "connect_result"
+                        }
+                      }
+                    ],
+                    "when": "%{request_response.isInWorkingHours} == true"
+                  },
+                  {
+                    "else": [
+                      {
+                        "play": {
+                          "url": "say:Our office hours are from Monday to Friday, spanning 9 AM to 6 PM. To connect with our agents, kindly place your call during this time frame. We look forward to assisting you!",
+                          "say_language": "en-US",
+                          "say_gender": "female",
+                          "say_voice": "gcloud.en-US-Standard-C"
+                        }
+                      },
+                      {
+                        "transfer": "ZYFRTspBKf-34skFsEoO8"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "default": [
+            {
+              "play": {
+                "url": "say:Oops! Something's not quite right on our end. Please try calling back later. Thank you!",
+                "say_language": "en-US",
+                "say_gender": "female",
+                "say_voice": "gcloud.en-US-Standard-C"
+              }
+            },
+            {
+              "transfer": "ZYFRTspBKf-34skFsEoO8"
+            }
+          ],
+          "variable": "request_result"
+        }
+      }
+    ],
+    "ZYFRTspBKf-34skFsEoO8": [
+      {
+        "hangup": {
+          "reason": "hangup"
+        }
+      }
+    ]
+  },
+  "version": "1.0.0"
+}
+
+```
