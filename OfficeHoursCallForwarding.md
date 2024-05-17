@@ -52,7 +52,7 @@ The following XML configuration should be added to your FreeSWITCH dialplan (e.g
 
 1. **Update the Dialplan**: Copy the XML configuration into your FreeSWITCH dialplan file (e.g., `dialplan/default.xml`).
 2. **Reload the Dialplan**: After updating the dialplan, reload it using the FreeSWITCH CLI:
-   ```bash
+```bash
 fs_cli -x "reloadxml"
 ```
 
