@@ -71,6 +71,7 @@ This SWML script is designed to handle incoming calls and forward them to a spec
       {
         "request": {
           "method": "GET",
+          "save_variables":true,
           "url": "https://f47d-103-52-38-2.ngrok-free.app/is_working_hours"
         }
       },
