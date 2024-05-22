@@ -242,3 +242,22 @@ app.listen(port, () => {
 });
 
 ```
+
+## SignalWire Call flow builder for Office Hours Call Forwarding
+
+### Introduction
+In addition to traditional scripting methods like SignalWire Markup Language (SWML), SignalWire offers a user-friendly drag-and-drop interface called SignalWire Call Flow Builder. This intuitive tool allows users to create complex Interactive Voice Response (IVR) systems visually, without extensive coding knowledge.
+
+SignalWire Call Flow Builder empowers users to design IVRs by arranging various call flow elements such as connect, join_room, play, switch, etc., using a simple drag-and-drop interface. This approach streamlines the process of building telephony applications, enabling rapid development and iteration cycles.
+
+Now, let's create an example for  Office Hours Call Forwarding  step-by-step using SignalWire Call Flow Builder, accompanied by screenshots to guide you through each stage of the process.
+
+Create call flow  with nodes shown in the picture below 
+![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/80172702-a13f-469d-b037-32afbf222a9d)
+
+
+In the request node add URL, Method GET/POST, and enable Set Variables as shown in the screenshot below:
+
+![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/bbc436c8-e190-4367-a652-6b2c723dd647)
+
+Once you've configured the call flow, click on "Deploy" to activate it. and Configure the SWML script to use your SignalWire phone number (you can refer to the Purchase a phone number guide for assistance) and save the changes. 
