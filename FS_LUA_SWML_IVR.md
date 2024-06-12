@@ -42,3 +42,23 @@ while (session:ready() == true) do
     end
 end
 ```
+
+### Configuration Steps
+To set up the IVR examples in  Freeswitch, follow these steps:
+
+1. Add the LUA Script: Place the above LUA script in the scripts directory of FreeSWITCH. For example, /usr/local/freeswitch/scripts and name it welcome_ivr.lua.
+2. Update Dialplan: Add the following XML in the public.xml dialplan to include the IVR extension:
+```xml
+<include>
+  <extension name="welcome_ivr">
+    <condition field="destination_number" expression="^(.*)$">
+      <action application="lua" data="welcome_ivr.lua"/>
+    </condition>
+  </extension>
+</include>
+```
+3. Reload Configuration: Execute the following command from the command line to reload the FreeSWITCH configuration:
+```bash
+fs_cli -x "reloadxml"
+```
+These steps provide a clear guide on how to configure and deploy the FreeSWITCH Lua script IVR example.
