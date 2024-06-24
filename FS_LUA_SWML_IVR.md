@@ -100,8 +100,31 @@ Now, let's create an example of all IVR functions example step-by-step using Sig
     ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/6f206ed2-10ce-4f8c-8a26-58a4000760e5)
 
 8. **Complete IVR Flow**
-![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/14e32d8f-f59d-4536-8473-6bfc98666b56)
- 
+
+    ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/14e32d8f-f59d-4536-8473-6bfc98666b56)
+
+    **Note:**
+    There is no direct Join Room node in the Call Flow Builder. To create this functionality, follow these steps:
+
+    1. **Create an SWML Script**: Go to the Relay/SWML tab in your SignalWire dashboard and create a new SWML script with the following JSON content:
+    
+        ```json
+        {
+          "version": "1.0.0",
+          "sections": {
+            "main": [
+              {
+                "join_room": "my_room"
+              }
+            ]
+          }
+        }
+        ```
+    
+    2. **Use the Execute SWML Node**: In the Call Flow Builder, use the *Execute SWML* node for the desired Gather digit option and link it to the script you created above.
+
+By completing these steps, you can effectively implement the IVR flow in SignalWire, allowing you to handle various call routing options, including joining a room using a custom SWML script.
+
 9. **Test Your IVR**: Congifure IVR call flow builder to your SIgnalwire number and make a test call to check the call flow as expected 
 
 
