@@ -89,7 +89,20 @@ Now, let's create an example of all IVR functions example step-by-step using Sig
 ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/68d1b89a-a218-4f3d-bc56-3d823c0f9658)
 
 
-5. **Add Answer Call Node**: To answer the incoming call first add an Answer call node and link it to the Handle call node as shown in the  below picture
+5. **Add Answer Call Node**: To answer the incoming call first add an Answer call node and link it to the Handle call node as shown in the screenshot below
 ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/40a02f14-f037-4bee-aacb-71bb91a15e8f)
+
+6. **Add Gather Node**: To gather caller input digits after playing a prompt, add a Gather Node and configure the options as shown in the screenshots below.
+    ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/0dc92b3c-bd96-4872-86cd-1c519221a3b6)
+    ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/7ef3f330-dc0c-4b2c-be25-668e1ce4447c)
+
+7. **Add Nodes to Gather Options**: After creating the Gather Node, configure each digit option by adding the corresponding child nodes. For example, you can add a Join Room node for Option 1, a Record Message node for Option 2, a Playback node for Option 3, a Forward to PSTN node for Option 4, and a Hangup node for all other options. Ensure to use Hangup nodes for the child nodes to complete the IVR flow.
+    ![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/6f206ed2-10ce-4f8c-8a26-58a4000760e5)
+
+8. **Complete IVR Flow**
+![image](https://github.com/ShashiKumar-SignalWire/SW-example-Docs/assets/45973234/14e32d8f-f59d-4536-8473-6bfc98666b56)
+ 
+9. **Test Your IVR**: Congifure IVR call flow builder to your SIgnalwire number and make a test call to check the call flow as expected 
+
 
 
